@@ -90,7 +90,7 @@ class Perceptron:
         return scored / self._size
 
     def xval_learning_alg(self, batch_size: int = 1):
-        learner = self.fit()
+        learner = self.fit
         data = self._data
         labels = self._labels
         k = batch_size
@@ -107,7 +107,10 @@ class Perceptron:
             selector = [x for x in range(labels.shape[1]) if x < prev or x >= prev + data_i.shape[1]]
             labels_j = labels[:, selector]
             prev += data_i.shape[1]
-            (theta, theta_0) = learner(data_j, labels_j)
+            learner(data_j, labels_j)
+            params = self.get_current_params()
+            theta = params['theta']
+            theta_0 = params['theta_0']
             scores.append(score(data_i, labels_i, theta, theta_0) / labels_i.shape[1])
         sum_score = 0
         for element in scores:
