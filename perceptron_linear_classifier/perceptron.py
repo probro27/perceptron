@@ -70,7 +70,7 @@ class Perceptron:
         self._current_step += 1
     
     def singleIteration(self):
-        for iteration in range(self._size):
+        for iteration in range(self._current_step, self._size):
             self.singleStep()
         self._current_step = 0
     
