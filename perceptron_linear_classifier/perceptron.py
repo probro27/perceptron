@@ -64,7 +64,7 @@ class Perceptron:
         y_i = self._labels[:,self._current_step]
         
         if y_i * y(x_i, self._theta, self._theta0) <= 0:
-            self._theta = self._theta + (y_i * x_i)
+            self._theta = self._theta + np.array([(y_i * x_i)]).T
             self._theta0 = self._theta0 + y_i
         
         self._current_step += 1
