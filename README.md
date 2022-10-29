@@ -27,7 +27,7 @@ perceptron.singleIteration()
 
 ## Contributing
 
-Please read the CONTRIBUTIN.md file for more information about it. 
+Please read the CONTRIBUTING.md file for more information about it. 
 
 ## Issues
 
