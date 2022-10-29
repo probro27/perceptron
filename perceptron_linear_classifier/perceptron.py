@@ -88,31 +88,3 @@ class Perceptron:
     def eval_classifier(self):
         scored = score(self._data_test, self._labels_test, self._theta, self._theta0)
         return scored / self._size
-
-    def xval_learning_alg(self, batch_size: int = 1):
-        learner = self.fit
-        data = self._data
-        labels = self._labels
-        k = batch_size
-        split_array = np.hsplit(data, data.shape[1])
-        distributed_data = np.array_split(split_array, k)
-        prev = 0
-        scores = []
-        for iteration in range(k):
-            copy_dis_data = distributed_data
-            data_i = np.array(copy_dis_data[iteration]).T[0]
-            copy_dis_data_1 = copy_dis_data[:iteration] + copy_dis_data[iteration + 1:]
-            data_j = np.concatenate(copy_dis_data_1, axis=0).T[0]
-            labels_i = labels[:, prev:prev + data_i.shape[1]]
-            selector = [x for x in range(labels.shape[1]) if x < prev or x >= prev + data_i.shape[1]]
-            labels_j = labels[:, selector]
-            prev += data_i.shape[1]
-            learner(data_j, labels_j)
-            params = self.get_current_params()
-            theta = params['theta']
-            theta_0 = params['theta_0']
-            scores.append(score(data_i, labels_i, theta, theta_0) / labels_i.shape[1])
-        sum_score = 0
-        for element in scores:
-            sum_score += element
-        return sum_score / k

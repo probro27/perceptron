@@ -9,7 +9,7 @@ with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
 
 VERSION = '0.0.1'
 DESCRIPTION = 'A basic Perceptron Linear Classifier algorithm'
-LONG_DESCRIPTION = 'A package that allows to build a simple linear classifier Perceptron algorithm provided the data and the labels and visualize it.'
+LONG_DESCRIPTION = 'A package that allows to build a simple linear classifier Perceptron algorithm provided the data and the labels.'
 
 # Setting up
 setup(
@@ -21,8 +21,9 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=['numpy', 'matplotlib', 'pytest'],
-    keywords=['python', 'video', 'stream', 'video stream', 'camera stream', 'sockets'],
+    install_requires=['numpy', 'matplotlib'],
+    test_requires=['pytest'],
+    keywords=['python', 'perceptron', 'linear classifier', 'classifier'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
