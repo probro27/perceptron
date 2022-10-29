@@ -72,15 +72,6 @@ def xor():
 expected_perceptron = [(np.array([[-9.0], [18.0]]), np.array([[2.0]])),(np.array([[0.0], [-3.0]]), np.array([[0.0]]))]
 datasets = [super_simple_separable_through_origin,xor]
 
-def incorrect(expected,result):
-    print("Test Failed.")
-    print("Your code output ",result)
-    print("Expected ",expected)
-    print("\n")
-
-def correct():
-    print("Passed! \n")
-
 
 def test_perceptron():
     '''
@@ -94,9 +85,4 @@ def test_perceptron():
         th = params['theta']
         th0 = params['theta_0']
         expected_th,expected_th0 = expected_perceptron[index]
-        print("-----------Test Perceptron "+str(index)+"-----------")
-        if((th==expected_th).all() and (th0==expected_th0).all()):
-            correct()
-        else:
-            incorrect("th: "+str(expected_th.tolist())+", th0: "+str(expected_th0.tolist()), "th: "+str(th.tolist())+", th0: "+str(th0.tolist()))
         assert((th==expected_th).all() and (th0==expected_th0).all())
